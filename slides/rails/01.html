@@ -4,7 +4,7 @@ title: Rails 01
 permalink: /rails/01/
 ---
 
-# Aula 01
+# Rails 01
 
 ---
 class: center, middle
@@ -26,9 +26,13 @@ assumptions about what every developer needs to get started. It allows you to
 frameworks. Experienced Rails developers also report that it makes web
 application development **more fun**."
 
-**Don't Repeat Yourself:** "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system."
+**Don't Repeat Yourself:** "Every piece of knowledge must have a single, 
+unambiguous, authoritative representation within a system."
 
-**Convention Over Configuration:** Rails has opinions about the best way to do many things in a web application, and defaults to this set of conventions, rather than require that you specify every minutiae through endless configuration files.
+**Convention Over Configuration:** Rails has opinions about the best way 
+to do many things in a web application, and defaults to this set of conventions,
+ rather than require that you specify every minutiae through endless 
+ configuration files.
 
 ---
 
@@ -57,9 +61,57 @@ application development **more fun**."
 
 ---
 
+# Vamos fazer
+
+https://github.com/rodriggochaves/blog
+
+---
+
+# Criando uma aplicação
+
+```bash
+$ rails new blog
+
+$ cd blog
+```
+
+---
+
+# Estruturas de Pastas
+
+`app/`:
+
++ models: são as representações das entidades do sistema e são responsáveis pela
+interface com o banco de dados.
+
++ controllers: são responsáveis por chamar os models e disponibilizar os dados
+na view.
+
++ view: são as páginas html que nossos usuários vão visualizar visualizar.
+
++ assets: todos os nossas imagens, stylesheets, javascripts e fonts.
+
++ mailers: todos os nossos triggers de e-mails.
+
+`bin/` "Contains the rails script that starts your app and can contain other 
+scripts you use to setup, deploy or run your application."
+
+---
+
+# Um pouco sobre Bash e Linha de Comando
+
+O **bash** é um interpretador de comandos, uma espécie de tradutor entre o
+sistema operacional e o usuário, normalmente conhecido como shell. Permite a
+execução de sequências de comandos direto no prompt do sistema ou escritas em
+arquivos de texto, conhecidos como shell scripts.
+
+---
+
+![Tool Line]({{base-url}}/assets/images/rails/toolline.png)
 
 
 ---
 # Referências
 
 + http://guides.rubyonrails.org/getting_started.html
++ https://www.railstutorial.org/book/
