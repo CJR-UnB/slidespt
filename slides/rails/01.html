@@ -96,6 +96,33 @@ na view.
 `bin/` "Contains the rails script that starts your app and can contain other 
 scripts you use to setup, deploy or run your application."
 
+`config/` Contém todas as configurações da aplicação.
+
+`db/` Contém o `schema.rb` e todas as migrações da aplicação.
+
+---
+
+```
+Gemfile
+Gemfile.lock
+```
+"These files allow you to specify what gem dependencies are needed for your 
+Rails application."
+
+`lib/` onde modulos externos ficam.
+
+`log/` onde os logs do seu programa ficam.
+
+`public/` "The only folder seen by the world as-is. Contains static files and 
+compiled assets."
+
+`tests/` testes da sua aplicação.
+
+`tmp/` arquivos temporários ficam aqui.
+
+`vendor/` "A place for all third-party code".
+
+
 ---
 
 # Um pouco sobre Bash e Linha de Comando
@@ -109,8 +136,76 @@ arquivos de texto, conhecidos como shell scripts.
 
 ![Tool Line]({{base-url}}/assets/images/rails/toolline.png)
 
+---
+
+# Rodando uma aplicação
+
+```bash
+$ rails s
+```
 
 ---
+
+# Vamos começar!
+
+```bash
+$ rails generate controller welcome index
+```
+
+O que aconteceu?
+
+```bash
+create  app/controllers/welcome_controller.rb
+ route  get 'welcome/index'
+invoke  erb
+create    app/views/welcome
+create    app/views/welcome/index.html.erb
+invoke  test_unit
+create    test/controllers/welcome_controller_test.rb
+invoke  helper
+create    app/helpers/welcome_helper.rb
+invoke  assets
+invoke    coffee
+create      app/assets/javascripts/welcome.js.coffee
+invoke    scss
+create      app/assets/stylesheets/welcome.css.scss
+```
+
+---
+
+```html
+<!-- app/views/index.html.erb -->
+<h1>Hello, Rails!</h1>
+```
+
+```ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  get 'welcome/index'
+
+  ...
+```
+
+---
+
+# Pontos importantes
+
++ O que é .erb??
+
+---
+
+class: middle
+
+# Parabéns, vocês fizeram o seu primeiro Hello World
+
+---
+
+Nós temos um blog. Vamos criar nossa primeira **entidade** do nosso sistema. Um artigo. Ou um Article.
+
+O que é uma entidade?
+
+---
+
 # Referências
 
 + http://guides.rubyonrails.org/getting_started.html
