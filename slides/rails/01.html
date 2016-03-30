@@ -204,6 +204,41 @@ Nós temos um blog. Vamos criar nossa primeira **entidade** do nosso sistema. Um
 
 O que é uma entidade?
 
+Quais são os atributos de um artigo?
+
+
+| Artigo        |
+|---------------|
+| Título        |	
+| Texto         |
+
+
+**Modelo de MVC com Rotas**
+
+```ruby
+Rails.application.routes.draw do
+ 
+  resources :articles
+ 
+  root 'welcome#index'
+end
+```
+
+---
+
+```bash
+$ rake routes
+		articles GET    /articles(.:format)          articles#index
+             POST   /articles(.:format)          articles#create
+ new_article GET    /articles/new(.:format)      articles#new
+edit_article GET    /articles/:id/edit(.:format) articles#edit
+     article GET    /articles/:id(.:format)      articles#show
+             PATCH  /articles/:id(.:format)      articles#update
+             PUT    /articles/:id(.:format)      articles#update
+             DELETE /articles/:id(.:format)      articles#destroy
+        
+```
+
 ---
 
 # Referências
