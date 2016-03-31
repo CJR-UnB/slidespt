@@ -42,12 +42,10 @@ $on-laptop:        800px;
 }
 
 
-
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "base",
-        "syntax-highlighting",
-        "fonts"
+    "bases/index",
+    "modules/index"
 ;
 
 body { 
@@ -70,6 +68,7 @@ strong {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain; 
+    vertical-align: middle
 }
 
 .remark-code, 
