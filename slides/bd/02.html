@@ -7,6 +7,173 @@ permalink: /bd/02/
 # BD 2
 
 ---
+class: center
 
-## Lógica SQL
+# Lógica SQL
 
+Professor: Rodrigo Chaves
+
+---
+
+## CRUD
+
+CRUD (acrónimo de Create, Read, Update e Delete na língua Inglesa) para as
+quatro operações básicas utilizadas em bases de dados relacionais (RDBMS) ou 
+em interface para utilizadores para criação, consulta, atualização e 
+destruição de dados.
+
+---
+
+## Tipos de Dados
+
+```sql
+timestamp
+int
+vachar(45)
+```
+
+Entre muitos outros...
+---
+
+## SQL
+
+---
+
+## DLL
+
+Linguagem de definição de dados é uma linguagem de computador usada para a 
+definição de estruturas de dados. O termo foi inicialmente introduzido 
+em relação ao modelo de banco de dados Codasyl, onde o esquema de banco de 
+dados era escrito em uma Linguagem de Definição de Dados descrevendo os 
+registros, campos e "conjuntos" que constituíam o Modelo de dados do usuário. 
+Inicialmente referia-se a um subconjunto da SQL, mas hoje é usada em um sentido 
+genérico para referir-se a qualquer linguagem formal para descrição de 
+estruturas de dados ou informação, assim como esquemas.
+
+---
+
+```sql
+CREATE TABLE empresa.projeto (
+        codProj INTEGER NOT NULL,
+        titulo VARCHAR(45),
+        codDepto INTEGER,
+        PRIMARY KEY (codProj)
+);
+```
+
+---
+
+```sql
+ALTER TABLE empresa.empregado ADD CONSTRAINT empregado_depto_fk FOREIGN KEY 
+(codDepto) REFERENCES empresa.departamento(codDepto);
+```
+
+---
+
+```sql
+DROP TABLE empresa.empregado
+```
+---
+
+## DML
+
+Linguagem de Manipulação de Dados (ou DML, de Data Manipulation Language) é 
+uma família de linguagens de computador utilizadas para a recuperação, 
+inclusão, remoção e modificação de informações em bancos de dados. Pode ser 
+procedural, que especifica como os dados devem ser obtidos do banco; pode 
+também ser declarativa (não procedural), em que os usuários não necessitam 
+especificar o caminho de acesso, isto é, como os dados serão obtidos. O padrão 
+SQL é não procedural. DMLs foram utilizadas inicialmente apenas por programas 
+de computador, porém (com o surgimento da SQL) também têm sido utilizadas por 
+pessoas.
+
+---
+
+```sql
+SELECT * FROM empresa.empregado
+```
+
+---
+
+```sql
+SELECT * FROM empresa.empregado WHERE salario > 30000
+```
+
+---
+
+Operações relacionas:
+
+```sql
+>
+<
+<=
+>=
+is Null
+is Not null
+```
+
+---
+
+Operações relacionas:
+
+```sql
+-- between
+SELECT * FROM bairro WHERE ren_media BETWEEN 1000 AND 2000;
+
+-- like
+SELECT * FROM pessoas WHERE nome LIKE 'JOÃO%';
+
+-- and
+SELECT * FROM crime WHERE cod_crime = 1 AND cod_tipe_crime = 1;
+
+-- or
+SELECT * FROM crime WHERE cod_crime = 1 OR cod_tipo_crime = 1;
+```
+
+???
+
++ Relembrar lógica booleana
+
+---
+
+```sql
+INSERT INTO empresa.dependente VALUES (2,'Joana Bagual','F','1986-05-05',
+'Filha');
+```
+
+---
+
+```sql
+UPDATE empresa.empregado SET salario = 1000 WHERE codEmp = 1
+```
+
+---
+
+```sql
+DELETE FROM empresa.empregado
+```
+
+---
+
+```sql
+DELETE FROM empresa.empregado WHERE codemp = 7
+```
+
+---
+class: center
+
+Qual a diferença entre `DELETE FROM` ou `DROP TABLE`?
+
+???
+
+`DELETE FROM`: apaga todos os dados de uma tabela, mas a estrutura da tabela 
+ainda existe. Eu ainda posso inserer dados novos.
+`DROP TABLE`: apaga todos os dados E a estrutura de tabela. E não posso inserir
+dados novos.
+
+---
+
+# Referêcias
+
++ https://pt.wikipedia.org/wiki/CRUD
++ https://pt.wikipedia.org/wiki/Linguagem_de_manipula%C3%A7%C3%A3o_de_dados
