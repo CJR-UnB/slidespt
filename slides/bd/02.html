@@ -114,7 +114,7 @@ is Not null
 
 ---
 
-Operações relacionas:
+## Operações relacionas:
 
 ```sql
 -- between
@@ -133,6 +133,15 @@ SELECT * FROM crime WHERE cod_crime = 1 OR cod_tipo_crime = 1;
 ???
 
 + Relembrar lógica booleana
+
+---
+
+## Funções de Agregação
+
+```sql
+-- count: retorna sempre um número!
+SELECT COUNT(*) FROM empresa.empregado WHERE salario > 30000;
+```
 
 ---
 
