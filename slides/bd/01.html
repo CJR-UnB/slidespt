@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Rails 01
+title: BD 01
 permalink: /bd/01/
 ---
 
-# SQL 01
+# BD 01
 
 ---
 class: center, middle
@@ -14,3 +14,144 @@ class: center, middle
 Professor: Rodrigo Chaves
 ---
 
+## O que é um Dado?
+
+“**Dado:** elemento que representa eventos ocorridos na empresa ou circunstâncias
+ físicas, antes que tenham sido organizados ou arranjados de maneira que as 
+ pessoas possam entender e usar.”
+
+> *Rossini & Palmisano*
+
+Dados geralmente são representados por tabelas.
+
+---
+
+## O que é uma informação?
+
+“Informação: Dado configurado de forma adequada ao entendimento e à utilização 
+pelo ser humano.”
+
+> *Rossini & Palmisano*
+
+---
+
+## O que é um Banco de Dados?
+
+“Um banco de dados é uma coleção logicamente coerente de
+dados com determinada significação intrínseca.”
+
+> *Jorge Surian e Luiz Nicochelli*
+
+---
+
+## O que é um SGDB?
+
+"Um Sistema Gerenciador de Banco de Dados é uma coleção de programas que 
+permitem interação com um usuário, uma aplicação ou o próprio banco de dados, 
+capturando e analisando dados para manipular definindo, construindo, 
+consultando e administrando bancos de dados para as mais diversas finalidades."
+
+---
+
+## O que compõe um SGDB
+
++ Linguagem de Definição de Dados
++ Linguagem de Manipulação de Dados
++ Dicionário de dados
+
+---
+
+## Quais são os modelos de SGDB
+
++ Relacional
++ Orientado a Objetos
+
+ps.: existem outros modelos!
+
+---
+
+## SQL
+
+```sql
+CREATE TABLE tabela;
+SELECT * FROM tabela;
+INSERT INTO tabela VALUES (valor1, valor2, valor3);
+UPDATE tabela SET coluna=valor WHERE id = x;
+DELETE FROM tabela WHERE id = x;
+```
+
+---
+
+## Exemplos de SGDB's
+
+obs: só os importantes!
+
++ MySQL
++ PostgreSQL
++ Oracle
+
+.important[Importante: ] cada SGDB tem um linguagem ligeramente diferente.
+
+---
+
+## Modelo Relacional
+
+![Modelo Relacional]({{base-url}}/assets/images/bd/modelo-relacional.png)
+
+---
+
+## Entidade e Atributos
+
+Uma entidade é representada por uma tabela, que pode ser descrita como um 
+conjunto de características (atributos) que compões os campos da tabela.
+
+---
+
+## Chave primária
+
++ Campo da tabela utilizado como índice
++ É exclusivo para cada registro, nunca se repete
++ Nunca é nulo
+
+**Exemplo:** Atributo CPF da entidade Pessoa
+
+---
+
+## Chave estrangeira
+
++ Campo da tabela que aponta para a chave primária de outra
+tabela quando existe relacionamento entre elas
+
++ Garante integridade dos dados referenciais 
+
+---
+
+## Relacionamento entre tabelas
+
++ Relacionamento um para um (1 1)
++ Relacionamento um para muitos (1 n)
++ Relacionamento muitos para muitos (n n)
+
+---
+
+## Normalização de Tabelas 
+
+A normalização de dados é uma série de passos que se seguem no projeto de um 
+banco de dados, que permitem um armazenamento consistente e um eficiente acesso 
+aos dados em bancos de dados relacionais. Esses passos reduzem a redundância de 
+dados e as chances dos dados se tornarem inconsistentes.
+
+---
+
+## Infelizmente
+
+Não posso ensinar isso, pois:
+
++ 1) Eu não lembro, aprendi no 1º semestre.
++ 2) Não temos tempo.
+
+---
+
+# Referências
+
++ https://pt.wikipedia.org/wiki/Normalização_de_dados
