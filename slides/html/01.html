@@ -101,7 +101,213 @@ Um arquivo html tem o seguinte esqueleto:
 ```
 ---
 
+```html
+<!DOCTYPE html>
+```
 
+Isso é a forma que nos indicamos o nosso browser que o nosso arquivo deve ser
+interpretado como HTML 5, a versão mais nova de HTML.
+
+Existem várias outras, caso tenham interesse em pesquisar.
+
+---
+
+```html
+<html lang="en">
+</html>
+```
+
+Todo o conteúdo que nosso browser vai interpretar deve estar envolvido nessa 
+tag.
+Além disso, estamos falando que a nossa página tem o conteúdo em inglês.
+
+---
+
+```html
+<head>
+</head>
+```
+
+The HTML `<head>` element provides general information (metadata) about the 
+document, including its title and links to/definitions of scripts and 
+stylesheets.
+
+---
+
+```html
+<body>
+</body>
+```
+
+The HTML `<body>` Element represents the content of an HTML document. 
+There can be only one `<body>` element in a document.
+
+---
+
+```html
+<html>
+<head>
+    <title>Page title here</title>
+</head>
+<body>
+    This is sample text...
+    <!-- We use this syntax to write comments -->
+    <!-- Page content and rest of the tage here... -->
+    <!-- This is the actual area that gets shown in the browser -->
+</body>
+</html>
+```
+
+---
+
+```
+<head>
+	<link rel="stylesheet" href="css/stylesheet.css">
+	<meta charset="utf-8">
+	<title>Pudim</title>
+</head>
+```
+
+The HTML `<title>` element defines the title of the document, shown in a 
+browser's title bar or on the page's tab. It can only contain text, and any 
+contained tags are ignored.
+
+---
+
+```html
+<meta charset="utf-8">
+```
+
+The HTML `<meta>` element represents any metadata information that cannot be 
+represented by one of the other HTML meta-related elements (`<base>`, 
+	`<link>`, `<script>`, `<style>` or `<title>`).
+
+---
+
+# Exportando CSS
+
+```html
+<link rel="stylesheet" href="css/stylesheet.css">
+```
+
+The HTML <link> element specifies relationships between the current document 
+and an external resource. Possible uses for this element include defining a 
+relational framework for navigation. This Element is most used to link to 
+stylesheets.
+
+---
+
+# Paragrafo
+
+The paragraph element consists of the start tag "`<p>`" and the closing tag 
+"`</p>`". The following example shows a paragraph contained within the HTML 
+paragraph element. Remember that your browser will not display more than one 
+space character in a row.
+
+```html
+<p>You are beginning to learn HTML.</p>
+```
+
+---
+
+# Estilizando
+
+Usually elements containing content can also contain other elements. For 
+example, the emphasis element ("`<em>`") can be embedded within a paragraph 
+element, to add emphasis to a word or phrase:
+
+```html
+<p>You are <em>beginning</em> to learn HTML.</p>
+```
+
+---
+
+# Imagens
+
+Some elements cannot contain other elements. For example, the image tag 
+("`<img>`") specifies the filename of the content (an image) as an attribute:
+
+```html
+<img src="smileyface.jpg" alt="Smiley face" >
+```
+
+---
+
+# Listas Ordenadas
+
+```html
+<ol>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+</ol>
+```
+
+The HTML `<ol>` Element (or HTML Ordered List Element) represents an ordered 
+list of items. Typically, ordered-list items are displayed with a preceding 
+numbering, which can be of any form, like numerals, letters or Romans numerals 
+or even simple bullets. This numbered style is not defined in the HTML 
+description of the page, but in its associated CSS, using the list-style-type 
+property.
+
+---
+
+# Listas Desornadas
+
+```html
+<ul>
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+</ul>
+```
+The HTML `<ul>` element (or HTML Unordered List Element) represents an unordered 
+list of items, namely a collection of items that do not have a numerical 
+ordering, and their order in the list is meaningless. Typically, unordered-list 
+items are displayed with a bullet, which can be of several forms, like a dot, a
+circle or a squared. The bullet style is not defined in the HTML description of 
+the page, but in its associated CSS, using the list-style-type property.
+
+---
+
+# Títulos
+
+```html
+<h1>Maior título!</h1>
+<h2>Maior título!</h2>
+<h3>Maior título!</h3>
+<h4>Maior título!</h4>
+<h5>Maior título!</h5>
+<h6>Maior título!</h6>
+```
+
+Heading elements implement six levels of document headings, `<h1>` is the most 
+important and `<h6>` is the least. A heading element briefly describes the
+topic  of the section it introduces. Heading information may be used by user 
+agents, for example, to construct a table of contents for a document 
+automatically.
+
+---
+
+```html
+<a href="people.html">Pessoas</a>
+```
+
+The HTML Anchor Element (`<a>`) defines a hyperlink to a location on the same 
+page or any other page on the Web. It can also be used (in an obsolete way) to 
+create an anchor point—a destination for hyperlinks within the content of a 
+page, so that links aren't limited to connecting simply to the top of a page.
+
+---
+
+```html
+<span style="color:red;"> consectetur </span>
+```
+
+The HTML `<span>` element is a generic inline container for phrasing content, 
+which does not inherently represent anything. It can be used to group elements 
+for styling purposes (using the class or id attributes), or because they share 
+attribute values, such as lang.
 
 ---
 
@@ -118,4 +324,5 @@ Um arquivo html tem o seguinte esqueleto:
 # Referências
 
 + https://pt.wikipedia.org/wiki/Linguagem_de_marcação
-
++ https://developer.mozilla.org/en-US/docs/Web/HTML/Element
++ https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Introduction
