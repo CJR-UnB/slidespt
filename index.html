@@ -1,23 +1,33 @@
 ---
-layout: default
+layout: landing
 ---
 
-<div class="home">
+<nav class="landing_header">
+  <div class="container">
+    <h1>Processo Trainee 01/2016</h1>
+  </div>
+</nav>
 
-  <h1 class="page-heading">Posts</h1>
+<section class="landing_section">
+  <div class="container">
+    <h5>HTML</h5>
+    <ul class="landing_list">
+      <li><a href="/html/01">HTML 01</a></li>
+      <li><a href="/html/02">HTML 02</a></li>
+      <li><a href="/html/03">HTML 03</a></li>
+      <li><a href="/html/04">HTML 04</a></li>
+    </ul>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <h5>Banco de Dados</h5>
+    <ul class="landing_list">
+      <li><a href="/bd/01">BD 01</a></li>
+      <li><a href="/bd/02">BD 02</a></li>
+      <li><a href="/bd/03">BD 03</a></li>
+    </ul>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+    <h5>Banco de Dados - Exercícios</h5>
+    <ul class="landing_list">
+      <li><a href="/bd/exercises/01/">01</a></li>
+    </ul>
+  </div>
+</section>

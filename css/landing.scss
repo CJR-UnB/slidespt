@@ -1,6 +1,7 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+
 @charset "utf-8";
 
 // Our variables
@@ -22,25 +23,14 @@ $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
 $content-width:    800px;
-
 $on-palm:          600px;
 $on-laptop:        800px;
 
-
-
-// Use media queries like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
         @content;
     }
 }
-
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
@@ -49,43 +39,51 @@ $on-laptop:        800px;
     "layout"
 ;
 
-body { 
-	font-family: 'Ubuntu'; 
-    font-size: 10px;
+.landing_header {
+    display: block;
+    height: 50px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #003366;
+
+    .container {
+        margin: 0 auto;
+        display: block;
+        width: 768px;
+
+        h1 {
+            margin-top: 10px;
+            font-size: 30px;
+            font-family: "Ubuntu Bold";
+            color: #003366;
+		}
+    }
 }
 
-h1, h2, h3 {
-	font-family: 'Ubuntu Bold';
-	font-weight: normal;
+.landing_section {
+    display: block;
+    height: 50px;
+
+    .container {
+        margin: 0 auto;
+        display: block;
+        width: 768px;
+
+        h5 {
+            margin-top: 20px;
+            font-size: 24px;
+            font-family: "Ubuntu Bold";
+            color: #003366;
+        }
+    }
 }
 
-strong {
-    font-weight: 900;
-    font-family: 'Ubuntu Bold';
-}
+.landing_list {
+    li a {
+        text-decoration: none;
 
-.remark-slide-content {
-    background-image: url("../assets/images/background.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain; 
-    vertical-align: middle
-}
-
-.remark-code, 
-.remark-inline-code { 
-	font-family: 'Ubuntu';
-    font-size: 18px;    
-}
-
-.justify {
-    text-align: justify;
-}
-
-.remark-slide-content {
-    color: #003366;
-}
-
-.remark-slide-number {
-    left: 20px;
+        &:hover {
+            color: #003366;
+        }
+    }
 }
