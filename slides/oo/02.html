@@ -1,0 +1,183 @@
+---
+layout: default
+title: OO 02
+permalink: /oo/02/
+---
+
+# Orientação a Objetos 02
+
+---
+
+# Revisão da aula passada...
+
++ O que é uma função?
++ O que é uma classe?
++ O que é um objeto?
++ O que é um atributo?
++ O que é um método?
++ O que é um get?
++ O que é um set?
+
+---
+
++ Um método, por padrão, é público ou privado?
++ Um atributo, por padrão, é público ou privado?
+
+---
+
+{% highlight ruby linenos %}
+class Celular
+
+	# atributos
+	@numero
+	@tipo
+
+	# métodos
+	def ligar
+		print "Estou ligando para o Rodrigo"
+	end
+
+	def calculadora_soma(a, b)
+		return a + b
+	end
+
+	def get_numero
+		return @numero
+	end
+
+	def set_numero=(numero)
+		@numero = numero
+	end
+end
+
+{% endhighlight %}
+
+---
+
+# O private
+
+---
+
+{% highlight ruby linenos %}
+class Celular
+
+	# métodos
+	...
+
+	private
+	def meu_metodo_private
+		"Sou privado!"
+	end
+end
+
+{% endhighlight %}
+
+---
+
+# O público
+
+---
+
+{% highlight ruby linenos %}
+class Celular
+
+	# atributos
+	...
+
+	public
+	@bateria
+end
+
+{% endhighlight %}
+
+---
+
+# Porém...
+
+Criar dois métodos para cada atributo pode se tornar muito grande, então Ruby 
+implementa uma maneira para facilitar isso.
+
+`attr_reader` => `numero()`
+
+`attr_writer` => `numero=("8181-0642")`
+
+`attr_accessor` => `numero()` e `numero=("8181-0642")`
+
+---
+
+# Encapsulamento
+
+---
+
+# Exercício
+
+1) Criem uma classe `Conta` com os seguintes atributos e métodos:
+
++ a) nome
++ b) saldo
++ c) saque, que rebece um parâmetro para remover do saldo
++ d) deposito, que acresenta ao saldo um valor passado por parametro
++ e) resgastar_saldo, que imprime na tela o valor do saldo
+
+---
+
+# Construtor
+
+{% highlight ruby linenos %}
+class Celular
+
+	def initialize
+		print "Estou construindo meu celular!"
+	end
+	
+	...
+	# meus outros atributos e métodos
+end
+
+{% endhighlight %}
+
+---
+
+# O que é re-uso?
+
+---
+
+# Herança
+
+{% highlight ruby linenos %}
+
+class Animal
+
+	def comer()
+	end
+
+end
+
+class Lobo < Animal
+
+	@pelugem
+
+	def uivar()
+		print "Lobo uivando para a Lua"
+	end
+
+end
+
+{% endhighlight %}
+
+---
+
+# Exercicio
+
+2) Crie uma classe `Conta_poupanca` que herda da classe `Conta` e tem um novo
+método `prever_rendimento_mensal` que recebe um parâmetro de X meses que 
+desejam ser previstos.
+
+---
+
+# Dúvidas?
+
+---
+
+# Fim
+
