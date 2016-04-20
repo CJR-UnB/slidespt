@@ -1,0 +1,428 @@
+---
+layout: default
+title: HTML 03
+permalink: /html/03/
+---
+
+# HTML 03
+Professor: Rodrigo Chaves
+
+---
+
+# Revisão
+
+---
+
++ Qual é a estrutura de uma tabela?
+
++ Como colocamos um arquivo CSS via arquivos externos>?
+
++ Qual estrutura básica do CSS?
+
++ O que o atributo `color` faz?
+
++ O que o atributo `background-color` faz?
+
+---
+
+# O que faltou da aula passada
+
+---
+
+# Text Align
+  
++ Um texto pode estar alinhado com o centro (center), com as bordas 
+(right/left), ou pode estar definido para que suas linhas ocupem exatamente o 
+mesmo tamanho (justified).
+
+```html
+h3 {
+  text-align: justify;
+}
+```
+
+---
+
+# Text Decoration
+
++ Vários elementos HTML vem com estilos predefinidos. Dentre eles, um dos mais
+irritantes para desenvolvedores novatos é o text-decoration de elementos como
+por exemplo links. Aqueles underlines raramente são necessários e por isso é
+possível se livrar deles da seguinte forma:
+
+```
+a {
+  text-decoration: none;
+}
+```
+
+Além de tirá-lo é possível substituí-lo por outros estilos que se adequam à 
+situação. Seguem exemplos uteis:
+
+```
+h1 {
+  text-decoration: overline;
+  text-decoration: underline;
+  text-decoration: line-through;
+}
+```
+
+---
+
+# Uma coisa importante:
+
+https://www.codecademy.com/pt/learn/web
+https://github.com/unbcjr/learning/blob/master/html/html.md
+
+---
+
+# div
+
+O HTML `<div>` elemento (ou simplesmente HTML Documento de Divisão de Elemento) 
+é um container genêrico para conteúdo de fluxo, que de certa forma não 
+representa nada. Ele pode ser usado utilizado para agrupar elementos para fins 
+de estilos (usando class ou id), ou porque eles compartilham valores de 
+atributos, como lang. Ele deve ser utilizado somente quando não tiver outro 
+elemento de semântica (tal como {{ HTMLElemento }} ou {{ HTMLElemento }}) como 
+é apropriado.
+
+---
+
+```html
+<!-- no arquivo box.html -->
+...
+<div class="box">
+</div>
+...
+```
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	width: 100px;
+	height: 100px;
+}
+}
+
+{% endhighlight %}
+
+---
+
+# Duas classes no mesmo elemento? Sim
+
+---
+
+```html
+<!-- no arquivo box.html -->
+...
+<div class="box red">
+</div>
+...
+```
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	width: 100px;
+	height: 100px;
+}
+
+.red {
+	background-color: red;
+}
+}
+
+{% endhighlight %}
+
+---
+
+# O que acontece com mais de uma .box?
+
+---
+
+```html
+<!-- no arquivo box.html -->
+...
+<div class="box red">
+</div>
+<div class="box red">
+</div>
+...
+```
+
+---
+
+# E agora?
+
+---
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	width: 100px;
+	height: 100px;
+	display: inline;
+}
+...
+
+}
+
+{% endhighlight %}
+
+---
+
+# E agora?
+
+---
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+}
+...
+
+}
+
+{% endhighlight %}
+
+---
+
+"O Display de um elemento especifica como aquele elemento será mostrado na 
+página."
+
+---
+
+# e?
+
+```css
+.box {
+	display: none;
+}
+```
+
+---
+
+# Isso é o display básico!
+
+---
+
+# Exercício 4
+
+[Imagem grande]({{base-url}}/assets/images/html_exercises/tarefa4.png)
+
+---
+
+# Revisão de HTML
+
+---
+
+```html
+<div>
+	<p>
+		<em></em>
+	</p>
+</div>
+```
+
+---
+
++ Quem é o elemento pai de `<em>`?
+
++ Quem é o elemento filho de `<div>`?
+
++ Quem é o elemento pai de `<p>`?
+
+---
+
+# Position:
+
+http://pt-br.learnlayout.com/position.html
+
+---
+
+Voltando ao exemplo da caixa:
+
+```html
+<!-- no arquivo box.html -->
+...
+<div class="box red">
+</div>
+...
+```
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	width: 100px;
+	height: 100px;
+	position: static;
+}
+...
+
+}
+
+{% endhighlight %}
+
+---
+
+Faz o elemento ter um comportamento normal, que é a de ser deixado em sua 
+posição atual no fluxo da página.  As propriedades top, right, bottom, left e 
+z-index não se aplicam para elementos com posição static.
+
+---
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	...
+	position: relative;
+}
+...
+
+}
+
+{% endhighlight %}
+
+---
+
+`relative` se comporta igualmente ao static, a menos que se adicione propriedades 
+extras no estilo do elemento.
+
+porém...
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	...
+	position: relative;
+	top: 10px;
+	left: 10px;
+}
+...
+
+}
+
+{% endhighlight %}
+
+Existe `bottom` e `right` também.
+
+---
+
+Definindo as propriedades top, right, bottom, e left em um elemento 
+position:relative o ajustamos em relação à posição atual dele. Outros conteúdos
+não vão se ajustar para se encaixarem em qualquer espaço deixado por esse 
+elemento.
+
+---
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  background-color: white;
+}
+...
+
+}
+
+{% endhighlight %}
+
+---
+
+Um elemento fixo - fixed - é posicionado relativamente ao "viewport", isso 
+significa que ele sempre ficará no mesmo lugar mesmo que haja rolagem na página.
+Assim como o relative, as propriedades top, right, bottom e left também são 
+utilizadas.
+
+---
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	...
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+...
+
+}
+
+{% endhighlight %}
+
+---
+
+Este valor se comporta como o fixed, porém tendo como referência a posição do 
+elemento relativo mais próximo de onde está contido, ao invés do viewport. Se 
+um elemento position:absolute não possuir elementos ancestrais posicionados 
+relativamente, ele utilizará o body como referência.
+
+---
+
+# float
+
+A propriedade float permite que um elemento flutue para uma determinada posição.
+Quando usamos `float: left;` o elemento flutua para esquerda da página. O oposto
+ocorre ao usarmos `float: right;`.
+
+---
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	...
+	float: right;
+}
+...
+
+}
+
+{% endhighlight %}
+
+---
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.box {
+	...
+	float: left;
+}
+...
+
+}
+
+{% endhighlight %}
+
+---
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+.clearfix {
+  overflow: auto;
+}
+
+{% endhighlight %}
+
+---
+
+# Referências
+
++ https://developer.mozilla.org/pt-BR/docs/Web/CSS/position
