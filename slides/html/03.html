@@ -418,8 +418,94 @@ ocorre ao usarmos `float: right;`.
 .clearfix {
   overflow: auto;
 }
+}
 
 {% endhighlight %}
+
+---
+
+# Multiplos seletores?
+
+{% highlight css %}
+/*no arquivo box.css*/
+
+p,
+.text {
+	color: green;
+	font-size: 14px;
+}
+}
+
+{% endhighlight %}
+
+---
+
+# Pseudo-classes
+
+```
+selector:pseudo-class {
+    property:value;
+}
+```
+
+---
+
+```html
+a:visited {
+  ... aqui colocamos o estilo do link 
+  depois que ele foi visitado ...
+}
+
+a:link {
+  ... aqui colocamos o estilo do link 
+  antes dele ser visitado ...
+}
+
+a:hover {
+  ... aqui colocamos o estilo do link 
+  quando o mouse estiver em cima dele ...
+}
+```
+
+---
+
+# Hover!
+
+---
+
+# Pseudo Elementos
+
+```
+selector::pseudo-element {
+    property:value;
+}
+```
+
+---
+
+```html
+p::before {
+
+}
+
+p::after {
+
+}
+
+p:first-child { 
+
+}
+
+p:nth-child(2) {
+
+}
+```
+
+---
+
+Note que entre o seletor e o pseudo-elemento temos `::` diferente das 
+pseudo-classes onde temos :. Os próximos exemplos mostram alguns 
+pseudo-elementos úteis:
 
 ---
 
