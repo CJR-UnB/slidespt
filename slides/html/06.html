@@ -1,0 +1,226 @@
+---
+layout: default
+title: HTML 06
+permalink: /html/06/
+---
+
+# HTML 06
+Professor: Rodrigo Chaves
+
+---
+
+# HTML 05
+
+É uma nova versão da linguagem HTML, com novos elementos, atributos, e 
+comportamentos.
+
+---
+
+# Semântica 
+
+permite você descrever mais precisamente o seu conteúdo.
+
++ Seções e estrutura de um documento HTML5
+
+---
+
+```html
+  <div class="section" id="elefantes-da-floresta" >
+    <h1>Elefantes da floresta</h1>
+    <p>Nesta seção, discutiremos os poucos conhecidos elefantes da floresta.
+    ...esta seção continua...
+    <div class="subsection" id="floresta-habitat">
+    <h2>Habitat</h2>
+    <p>Os elefantes da floresta não vivem em árvores mas sim entre elas.
+    ...esta subseção continua...
+    </div>
+  </div>
+```
+
+---
+
+```html
+<body>
+  <h1>Mammals</h1>
+  <h2>Whales</h2>
+  <p>In this section, we discuss the swimming whales.
+     ...this section continues...
+  <section>
+    <h3>Forest elephants</h3>  
+    <p>In this section, we discuss the lesser known forest elephants.
+      ...this section continues...
+    <h3>Mongolian gerbils</h3>
+      <p>Hordes of gerbils have spread their range far beyond Mongolia.
+         ...this subsection continues...
+    <h2>Reptiles</h2>
+      <p>Reptiles are animals with cold blood.
+          ...this subsection continues...
+  </section>
+</body>
+```
+
+---
+
+# Formulário
+
++ O atributo `placeholder`
+
++ O atributo `autofocus`
+
++ O atributo `required`
+
+
+---
+
+```html
+<article></article>
+```
+
+```html
+<aside></aside>
+```
+
+```html
+<footer></footer>
+```
+
+```html
+<header></header>
+```
+
+```html
+<nav></nav>
+```
+
+---
+
+```html
+<mark> 
+<figure>
+<figcaption>
+<data>
+<time>
+<output>
+<progress>
+<meter>
+<main>
+```
+
+---
+
+# Conectividade 
+
+permite uma comunicação com o servidor de formas modernas e inovadoras.
+
+---
+
+## Web Sockets
+
+> Permite a criação de uma conexão permanente entre a página e o servidor para que
+estes possam trocar dados através desta ligação.
+
+---
+
+## Eventos do servidor
+
+> Permite que o servidor envie eventos para um cliente, ao contrário do paradigma 
+clássico onde o servidor pode enviar apenas dados em resposta às requests do 
+cliente.
+
+---
+
+# Offline e armazenamento
+
+Permite que páginas web armazenem dados localmente do lado do cliente e opere de
+forma offline mais eficientemente.
+
+> HTML5 fornece um mecanismo de cache de aplicativo que permite que aplicações 
+baseadas na web executado offline. Os desenvolvedores podem usar a interface do 
+aplicativo Cache (AppCache) para especificar os recursos que o navegador deve 
+armazenar em cache e disponibilizar aos usuários offline.
+
+
+---
+
+# Multimídia
+
+Viabiliza a utilização de áudio e vídeo de forma primorosa na Web Aberta.
+
+---
+
+# Vídeo
+
+```html
+<video src="http://v2v.cc/~j/theora_testsuite/320x240.ogg" controls>
+  Seu navegador não suporta o elemento <code>video</code>.
+</video>
+```
+
+---
+
+```html
+<video controls>
+  <source src="foo.ogg" type="video/ogg">
+  <source src="foo.mp4" type="video/mp4">
+  Seu navegador não suporta o elemento <code>video</code>.
+</video>
+```
+
+---
+
+# Aúdio
+
+```html
+<audio src="audio.mp3" preload="auto" controls></audio>
+```
+
++ "none" não carrega o arquivo
++ "auto" carrega o arquivo
++ "metadata" carrega apenas os meta dados do arquivo
+
+---
+
+# Gráficos e efeitos 2D/3D
+
+viabiliza um leque diversificado de opções de representação gráfica.
+
+> O elemento HTML Canvas (`<canvas>`) pode ser utilizado para desenhar gráficos 
+utilizando scripts (geralmente JavaScript). Por exemplo, além de desenhar 
+gráficos, ele pode ser usado para fazer composições de fotos e também para 
+animações. Você poderá colocar conteúdos alternativos dentro do bloco `<canvas>`. 
+Este conteúdo será renderizado também em navegadores antigos e em navegadores 
+com JavaScript desabilitado.
+
+---
+
+# Performace e Integração 
+
+fornece grande otimização de velocidade e melhor utilização do hardware do 
+computador.
+
++ Web Workers: Permite usar Javascript para criar threads e carregar o conteúdo
+dinâmicamente.
+
++ XMLHttpRequest level 2: Permite adquirir conteúdo dinâmicamente do servidor.
+
++ History API: permite manipular o histórico.
+
++ Drag and Drop
+
++ Fullscreen API
+
++ Pointer Lock API: permite travar a posição do mouse. Muito usado em jogos.
+
+---
+
+# Acesso ao dispositivo
+
+viabiliza a utilização de diversos métodos e dispositivos de entrada e saída.
+
++ Camera API: conversar com a câmera do servidor.
+
++ Eventos de toque.
+
++ Usar geolocalização.
+
++ Detectando orientação do dispositivo.
