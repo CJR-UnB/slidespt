@@ -1,0 +1,137 @@
+---
+layout: default
+title: HTML 07
+permalink: /html/07/
+---
+
+# HTML 07
+Professor: Rodrigo Chaves
+
+---
+
+# Animações em CSS
+
+---
+
+Vamos aos exemplos por que com eles tudo fica mais fácil
+
+---
+
+```css
+.box {
+  ...
+  background-color: #0000FF;
+  -webkit-transition: width 2s, height 2s, background-color 2s, 
+      -webkit-transform 2s;
+  transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+```
+
+---
+
+```css
+.box:hover {
+  background-color: #FFCCCC;
+  width: 200px;
+  height: 200px;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+```
+
+---
+
+```css
+transition-property: width, opacity, top, height;
+```
+
+---
+
+```css
+transition-duration: 2s;
+```
+
+---
+
+```css
+transition-timing-function: ease linear;
+```
+
+---
+
+```
+transition-delay: 2s;
+```
+
+---
+
+animation-delay
+> Configura o delay entre o tempo em que o elemento é carregado e o inicio da 
+sequência de animação.
+
+animation-direction
+> Configura se a animação deve ou nao alternar a direção em cada execução durante
+a sequência ou voltar ao ponto inicial e se repetir.
+
+animation-duration
+> Configura o tempo que uma animação deveria levar para complear um ciclo.
+
+animation-iteration-count
+> Configura o numero de vezes que uma animação deveria se repetir; você pode 
+especificar infinito para repetir a animação indefinidamente.
+
+---
+
+animation-name
+> Especifica o nome da regra com parênteses (at-rule) @keyframes at-rule 
+descrevendo os keyframes da animação.
+
+animation-play-state
+> Permite voce pausar e resumir a sequência da animação.
+
+animation-timing-function
+> Configura a sincronização da animação; que é, como a animação transita por 
+keyframes, por estabilizar curvas de aceleração.
+
+animation-fill-mode
+> Configura que valores são aplicados pela animação antes e depois de se 
+executar.
+
+---
+
+# Media Query
+
+---
+
+# O que é?
+
+Uma media query consiste de um media type e pelo menos uma expressão que limita 
+o escopo das folhas de estilo usando media features, tal como largura, altura e
+cor. Media queries, adicionadas no CSS3, deixam a apresentação do conteúdo 
+adaptado a uma gama especifica de dispositivos não precisando mudar o conteúdo 
+em si.
+
+---
+
+```css
+@media (min-width: 700px) and (orientation: landscape) { ... }
+
+@media tv and (min-width: 700px) and (orientation: landscape) { ... }
+
+@media not all and (monochrome) { ... }
+```
+
+---
+
+```css
+@media not screen and (color), print and (color)
+```
+
+---
+
+[Para quem quer saber mais](https://developer.mozilla.org/pt-BR/docs/Web/Guide/
+CSS/CSS_Media_queries)
+
+---
+
+# Flex box
