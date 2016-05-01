@@ -5,6 +5,8 @@
     {% include head.html %}
     <link rel="stylesheet" href="{{ "/css/default.css" 
       | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
   </head>
 
 
@@ -14,6 +16,6 @@
     </textarea>
 
     {% include footer.html %}
-
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
