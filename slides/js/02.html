@@ -9,14 +9,238 @@ Professor: Rodrigo Chaves
 
 ---
 
-# Função Anônima
+# Experiência do Usuário
+
+"Experiência do usuário (EU), do inglês user experience (UX), envolve os 
+sentimentos de uma pessoa em relação à utilização de um determinado produto, 
+sistema ou serviço. A experiência do usuário destaca os aspectos afetivos, 
+experienciais, significativos e valiosos de interação humano-computador e 
+propriedade do produto."
+
+---
+
+# Trés camadas
+
++ Conteúdo: HTML
++ Apresentação: CSS
++ Comportamento: Javascript
+
+---
+
+```html
+<a href="#" onclick="callMe()">Ligar para Rodrigo!</a>
+```
+
+---
+
+É possível inserir mais de um arquivo `.js` no seu arquivo HTML.
+
+---
+
+**Statement**: cada pequeno passo que eu faço em um programa e diz para o 
+browser realizar uma ação.
+
+**Program**: conjunto de "statements".
+
+Cada statement termina com um `;`
+
+---
 
 ```javascript
-var soma = function(a, b) {
-  return a + b;
+
+// comentários legal
+stament 1; //comentário legal
+/*
+Comentário multilinha.
+ */
+
+```
+
+---
+
+Função em JS: um pequeno pacote de código que está esperando o momento certo 
+para ser executado.
+
+---
+
+Somente funções mudam o escopo do nosso script JS.
+
+---
+
+# Orientação a Objetos em JS
+
+---
+
+```javascript
+var Robot = new Object();
+Robot.metal = "Titanium";
+Robot.killAllHumans = function() {
+  alert("Exterminate!");
+}
+Robot.killAllHumans;
+```
+
+---
+
+```javascript
+var Robot = 
+{
+  metal: "Titanium",
+  killAllHumans: function() {
+    alert("Exterminate!");
+  }
 };
 ```
 
 ---
 
-# 
+```javascript
+var Robot = {
+  init: function() {
+    console.log("Construindo um robo!");
+  }
+};
+```
+
+---
+
+# Acessando o DOM
+
++ Text Nodes
++ Attributes Nodes
+
+---
+
+```js
+var target = document.getElementById("berenger");
+```
+
+---
+
+```js
+alert(target.nodeName);
+```
+
+---
+
+```js
+var listItems = document.getElementsByTagName("li");
+```
+
+---
+
+```js
+var lists = document.getElementsByTagName("ul");
+
+var secondList = lists[1];
+
+var secondListItems = secondList.getElementsByTagName("li");
+
+```
+
+---
+
+# Procurando elementos
+
+ID x Class
+
++ ID: procura um elemento e espera que encontrarmos apenas um elemento.
+
++ Classe: procura elementos e espera que encontrarmos vários elementos
+
+---
+
+```js
+Core.getElementsByClass = function(theClass) {
+  var elementArray = [];
+  if (typeof document.all != "undefined") {
+    elementArray = document.all;
+  } else {
+    elementArray = document.getElementsByTagName("*");
+  }
+  var matchedArray = [];
+  var pattern = new RegExp("(^| )" + theClass + "( |$)");
+  for (var i = 0; i < elementArray.length; i++)  {
+    if (pattern.test(elementArray[i].className))  { 
+      matchedArray[matchedArray.length] = elementArray[i];
+    }
+  }
+  return matchedArray;
+};
+
+```
+
+---
+
+```js
+var oliver = document.getElementById("oliver");
+
+var paragraph = oliver.parentNode;
+
+```
+
+---
+
+```js
+var baldwins = document.getElementById("baldwins");
+
+var william = baldwins.childNodes[2];
+
+```
+
+---
+
+```js
+var daniel = william.previousSibling;
+```
+
+---
+
+# Trabalhando com Atributos
+
+```js
+var koko = document.getElementById("koko");
+
+var kokoHref = koko.getAttribute("href");
+```
+
+---
+
+```js
+var koko = document.getElementById("koko");
+
+var kokoId = koko.getAttribute("id");
+
+```
+
+---
+
+```js
+var uriel = document.getElementById("uriel");
+
+uriel.setAttribute("href", "/uriel/");
+
+```
+
+---
+
+```js
+var pudim = document.getElementById("pudim");
+
+pudim.style.color = "#FF0000";
+```
+
+---
+
+# JQuery
+
+---
+
+
+
+---
+
+# Referências
+
++ http://www.itp.uzh.ch/~suzanne/ebooks/simplyJavascript.pdf
++ https://pt.wikipedia.org/wiki/Experiencia_do_usuario
