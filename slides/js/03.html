@@ -1,0 +1,150 @@
+---
+layout: default
+title: Javascript 03
+permalink: /js/03.html/
+---
+
+# Javascript 03
+Professor: Rodrigo Chaves
+
+---
+
+![DOM Family]({{ base-url }}
+  /assets/images/js/dom_list.png)
+
+---
+
+```js
+var oliver = document.getElementById("oliver");
+
+var paragraph = oliver.parentNode;
+
+```
+
+---
+
+```js
+var baldwins = document.getElementById("baldwins");
+
+var william = baldwins.childNodes[2];
+
+```
+
+---
+
+```js
+var daniel = william.previousSibling;
+```
+
+---
+
+# Trabalhando com Atributos
+
+```js
+var koko = document.getElementById("koko");
+
+var kokoHref = koko.getAttribute("href");
+```
+
+---
+
+```js
+var koko = document.getElementById("koko");
+
+var kokoId = koko.getAttribute("id");
+
+```
+
+---
+
+```js
+var uriel = document.getElementById("uriel");
+
+uriel.setAttribute("href", "/uriel/");
+
+```
+
+---
+
+```js
+var pudim = document.getElementById("pudim");
+
+pudim.style.color = "#FF0000";
+```
+
+---
+
+# Events Handlers
+
++ onclick:           Use this to invoke JavaScript upon clicking (a link, or 
+form boxes)
+
++ onload:            Use this to invoke JavaScript after the page or an image 
+has finished loading.
+
++ onmouseover:       Use this to invoke JavaScript if the mouse passes by some 
+link
+
++ onmouseout:        Use this to invoke JavaScript if the mouse goes pass some 
+link
+
++ onunload:          Use this to invoke JavaScript right after someone leaves 
+this page.
+
+---
+
+E se quisermos colocarmos mais de um evento para o mesmo elemento?
+
+---
+
+# Event Listeners 
+
+```js
+element.addEventListener("event", eventListener, false);
+
+// Internet Explorer
+element.attachEvent("onevent", eventListener);
+```
+
+---
+
+# JQuery
+
+https://jquery.com/
+
+---
+
+# Selecionando Elements
+
+```js
+$("tr")
+
+$(".item")
+
+$("#table")
+```
+
+---
+
+# Atributos
+
+```js
+$(".item").attr("href");
+
+$(".item").attr("href", "/novarota");
+```
+
+---
+
+http://api.jquery.com/click/#click-eventData-handler
+
+```js
+var data = "evento"
+
+$(".item").click(data, function() {
+  console.log(data);
+});
+```
+
+---
+
