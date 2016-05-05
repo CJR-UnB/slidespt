@@ -76,20 +76,34 @@ pudim.style.color = "#FF0000";
 
 # Events Handlers
 
-+ onclick:           Use this to invoke JavaScript upon clicking (a link, or 
+Eventos são procedimentos executados em consequência a uma ação. Quando um botão
+muda por colocar o mouse em cima dele, um evento foi ativado que executou um 
+código JavaScript. A lista de eventos é gigantesca, então selecionei alguns
+mais importantes:
+
+---
+
++ `onclick`: Use this to invoke JavaScript upon clicking (a link, or 
 form boxes)
 
-+ onload:            Use this to invoke JavaScript after the page or an image 
++ `onload`: Use this to invoke JavaScript after the page or an image 
 has finished loading.
 
-+ onmouseover:       Use this to invoke JavaScript if the mouse passes by some 
++ `onmouseover`: Use this to invoke JavaScript if the mouse passes by some 
 link
 
-+ onmouseout:        Use this to invoke JavaScript if the mouse goes pass some 
++ `onmouseout`: Use this to invoke JavaScript if the mouse goes pass some 
 link
 
-+ onunload:          Use this to invoke JavaScript right after someone leaves 
++ `onunload`: Use this to invoke JavaScript right after someone leaves 
 this page.
+
++ `onchange`: Ativa quando o usuário muda a opção de seleção do elemento 
+`<select>`
+
++ `onselect`: Ativa quando o usuário seleciona um texto.
+
++ `onsubmit`: Ativa quando um formulário é enviado.
 
 ---
 
@@ -148,3 +162,4 @@ $(".item").click(data, function() {
 
 ---
 
++ http://www.w3resource.com/jquery-exercises/jquery-core-exercises.php
