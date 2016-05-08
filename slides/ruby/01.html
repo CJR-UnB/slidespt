@@ -1,0 +1,316 @@
+---
+layout: default
+title: Ruby 01
+permalink: /ruby/01/
+---
+
+# Ruby 01
+Tutor: Rafael Fernandes
+
+---
+
+### Programa:
+
++ Introdução
++ Onde usamos o Ruby?
++ Convenções e estruturas primitivas
+    - Tipos de dados e variáveis
+    - Entrada e saída de dados
+    - Estruturas condicionais
+    - Estruturas de repetição
++ Estruturas de dados
+    - Arrays
+    - Hashes
++ Blocos, Procs e Lambdas
++ Orientação a objetos
+    - Classe
+    - Métodos e objetos
+    - Estrutura da classe
+    - Herança
++ Construindo uma aplicação
+
+---
+
+## Introdução
+
+Verifique se o Ruby está instalado:
+```bash
+$ ruby -v
+ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
+```
+
+Se não, utilize o seguinte site:
+https://repl.it/languages/ruby
+
+e instale o Ruby depois.
+
+---
+
+### O Ruby
+
+O Ruby é uma linguagem de programação multiparadigma **interpretada**, de tipagem **forte** e **dinâmica**.
+
+---
+
+### Interpretada
+O Ruby possui um programa que é responsável pela interpretação do código, isto é, transformar o código em instruções de máquina e executá-las.
+
+---
+
+### Interpretador interativo
+Podemos acessar um interpretador interativo no terminal:
+
+```bash
+$ irb
+irb(main):001:0>
+```
+
+E podemos usar métodos, blocos e manipular variáveis neste interpretador.
+
+Por exemplo:
+```bash
+irb(main):001:0> (1..10).to_a.select{ |x| x.even? }
+=> [2, 4, 6, 8, 10]
+```
+---
+
+### Ou...
+
+Executando a partir de um arquivo
+
+```ruby
+# teste.rb
+print (1..10).to_a.select{ |x| x.even? }
+```
+
+```bash
+$ ruby teste.rb
+[2, 4, 6, 8, 10]%
+```
+---
+
+### Tipagem dinâmica
+
+Em Ruby não é necessário especificar o tipo de dado ao se declarar uma variável.
+
+Por exemplo:
+```
+irb(main):002:0> numero = 5
+=> 5
+irb(main):003:0> numero.class
+=> Fixnum
+```
+
+O Ruby infere o tipo de dado na declaração e o atribui à variável.
+---
+
+### Tipagem forte
+
+Podemos entender isso melhor por um exemplo:
+```ruby
+# teste.rb
+numero = 5
+string = "Rafael"
+
+print numero + string
+```
+
+```bash
+$ ruby teste.rb
+teste.rb:4:in `+': String can't be coerced into Fixnum (TypeError)
+    from teste.rb:4:in `<main>'
+```
+
+---
+
+O erro de tipo nos diz que a `String` não pode ser forçada num `Fixnum`.
+
+O que tentamos fazer foi a soma de uma string com um número, resolvemos isso convertendo a `String` para um `Fixnum`.
+
+```ruby
+# teste.rb
+...
+print numero + string.to_i
+```
+
+```bash
+$ ruby teste.rb
+5%
+```
+
+---
+
+O resultado é apenas o valor de numero, pois a conversão de uma string em inteiro retorna `0`,
+
+```bash
+$ irb
+irb(main):001:0> "Rafael".to_i
+=> 0
+```
+
+a não ser que seja um número no formato de string, como `"42"`, por exemplo.
+
+```bash
+irb(main):002:0> "42".to_i
+=> 42
+```
+
+---
+
+Se trocassemos a ordem das variáveis,
+
+```ruby
+# teste.rb
+...
+print string + numero
+```
+
+```bash
+$ ruby teste.rb
+teste.rb:4:in `+': no implicit conversion of Fixnum into String (TypeError)
+    from teste.rb:4:in `<main>'
+```
+
+---
+
+O erro de tipo nos diz que não pode haver uma conversão implicita de um `Fixnum` para uma `String`.
+
+O que tentamos fazer foi uma concatenação de string, resolvemos isso convertendo o numero para uma string.
+
+```ruby
+# teste.rb
+...
+print string + numero.to_s
+```
+
+```bash
+$ ruby teste.rb
+Rafael5%
+```
+
+---
+
+Podemos tirar do exemplo que a tipagem forte do Ruby não nos deixa realizar operações com tipos de dados diferentes.
+
+---
+
+### Classes Abertas
+
+O Ruby possui classes abertas, ou seja, podemos defini-las novamente e alterar ou sobrescrever métodos.
+
+```ruby
+# teste.rb
+class Fixnum
+    
+    def + value
+        self - value
+    end
+
+end
+
+print 5 + 4
+```
+
+```bash
+$ ruby teste.rb
+1%
+```
+
+---
+
+### O que aconteceu?
+
+Um número inteiro é uma instância da classe `Fixnum`, ou seja, é um objeto.
+
+A classe `Fixnum` possui já definido o método soma `(+)`.
+
+Ao alterarmos o método, fizemos com que o número fosse subtraído de outro, em vez de ser somado.
+
+Ao fazermos
+
+```ruby
+print 5 + 4
+```
+
+Instanciamos a classe `Fixnum` (objeto '5') e imediatamente utilizamos o método `+` passando como parâmetro o outro objeto '4'.
+
+A saída é o resultado do método.
+
+---
+
+## Onde usamos o Ruby?
+
++ Na criação de *scripts* de leitura e processamento de arquivos
++ Automização de *builds* e *deploys*
++ Rails
+
+---
+
+### Rails
+
+O Rails é um framework WEB que segue o padrão MVC (Model - View - Controller).
+
+Usamos ele na CJR para fazermos os projetos.
+
+---
+
+### Exemplo de aplicação
+
+Sistema de Gerenciamento de Atas da CJR
+
+http://sga-cjr.herokuapp.com
+
+![SGA Index]({{ base-url }}
+  /assets/images/ruby/sga-index.png)
+
+---
+
+![SGA Index Mobile]({{ base-url }}
+  /assets/images/ruby/sga-index-mobile.png)
+
+---
+
+### Exemplo de código Ruby
+
+```ruby
+# app/controllers/users_controller.rb
+class UsersController < ApplicationController
+...
+
+    def create
+        @user = User.create(user_params)
+        respond_to do |format|
+            format.html { redirect_to users_path, notice: 'O usuário foi criado.' }
+        end
+    end
+
+...
+end
+```
+
+---
+
+```ruby
+# app/views/records/index.html.slim
+= content_for :text_logo, 'Sistema de Gerenciamento de Atas'
+
+.row
+
+  = form_tag('/select_sector_records', remote: true) do
+    
+    .col-sm-9.col-xs-7
+      = collection_select :sector, :id, Sector.all, :id, :name, 
+                          { prompt: false,  selected: session[:sector_id] },
+                          class:'form-control'
+
+    .col-sm-3.col-xs-5
+      = button_tag type: "submit", class: "btn btn-primary btn-block" do
+        i.fa.fa-search
+        | &nbsp;&nbsp;&nbsp;Buscar atas
+```
+
+---
+
+Prontos para começar?
+
+C:
