@@ -9,50 +9,78 @@ Professor: Rodrigo Chaves
 
 ---
 
-# Orientação a Objetos 2
+# JSON
+
+JSON (JavaScript Object Notation) is a lightweight data-interchange format. It 
+is easy for humans to read and write. It is easy for machines to parse and 
+generate.
 
 ---
 
-# Classes
-
----
-
-`prototype`
-
----
-
-# Construtor
-
-```js
-function Apple (type) {
-  this.type = type;
-  this.color = "red";
+```
+var myJson = {
+  "umaChave1": "Valor 1",
+  "umaChave2": "Valor 2",
+  "umaChave3": "Valor 3",
+  "umaChave4": "Valor 4"
 }
 ```
 
 ---
 
-# Métodos
+# AJAX
+
+Perform an asynchronous HTTP (Ajax) request.
+
+---
 
 ```js
-Apple.prototype.getInfo = function() {
-  return this.color + ' ' + this.type + ' apple';
-};
+$(document).ready(function() {
+  $.ajax("https://processotrainee.firebaseio.com/users/0.json", {
+    success: function(data) {
+      console.log(data);
+    },
+    error: function() {
+      console.log("Error");
+    }
+  })
+});
 ```
 
 ---
 
-# O que são expressões regulares
+```js
+$(document).ready(function() {
+  var color;
 
-O JavaScript tem uma ferramenta predefinida extremamente poderosa chamada 
-expressão regular. Essa ferramenta permite a seleção de cadeias de caracteres 
-de interesse em um texto. Expressões regulares podem, também, serem 
-conceituadas como uma sequência de caracteres que definem um padrão de busca.
+  $.ajax("https://processotrainee.firebaseio.com/example.json", {
+    success: function(data) {
+      color = data.color
+    },
+    error: function() {
+      console.log("Error");
+    }
+  });
+
+  $(".theBox").click(function() {
+    $(this).css("background-color", color);
+  });
+
+});
+```
 
 ---
 
-As expressões regulares surgiram no ano de 1956 quando Stephen Cole Kleene 
-descreveu linguagens regulares usando notação matemática. A teoria definida 
-pelo matemático ganhou enorme importância na área teórica da ciência da 
-computação, principalmente na teoria dos autômatos e na teoria das linguagens 
-formais.
+# Exercicio 1
+
+Fazer uma requisição AJAX a `https://processotrainee.firebaseio.com/users.json`
+e listar todos os usuários em um select. Essa mudança pode ser atividada por 
+um botão.
+
+---
+
+# Exercicio 2
+
+Fazer um select onde existem duas opções: "Usuários e Animais". Fazer uma 
+requisição ajax para editar em tempo real um segundo select que mostra ou 
+os usuários ou animais, dependendo do primeiro select.
