@@ -72,6 +72,7 @@ Por exemplo:
 irb(main):001:0> (1..10).to_a.select{ |x| x.even? }
 => [2, 4, 6, 8, 10]
 ```
+
 ---
 
 ### Ou...
@@ -94,7 +95,7 @@ $ ruby teste.rb
 Em Ruby não é necessário especificar o tipo de dado ao se declarar uma variável.
 
 Por exemplo:
-```
+```bash
 irb(main):002:0> numero = 5
 => 5
 irb(main):003:0> numero.class
@@ -102,23 +103,20 @@ irb(main):003:0> numero.class
 ```
 
 O Ruby infere o tipo de dado na declaração e o atribui à variável.
+
 ---
 
 ### Tipagem forte
 
 Podemos entender isso melhor por um exemplo:
-```ruby
-# teste.rb
-numero = 5
-string = "Rafael"
-
-print numero + string
-```
 
 ```bash
-$ ruby teste.rb
-teste.rb:4:in `+': String can't be coerced into Fixnum (TypeError)
-    from teste.rb:4:in `<main>'
+$ irb
+irb(main):001:0> 42 + "Gabriel"
+TypeError: String can't be coerced into Fixnum
+  from (irb):1:in `+'
+  from (irb):1
+  from /usr/local/bin/irb:11:in `<main>'
 ```
 
 ---
@@ -127,15 +125,9 @@ O erro de tipo nos diz que a `String` não pode ser forçada num `Fixnum`.
 
 O que tentamos fazer foi a soma de uma string com um número, resolvemos isso convertendo a `String` para um `Fixnum`.
 
-```ruby
-# teste.rb
-...
-print numero + string.to_i
-```
-
 ```bash
-$ ruby teste.rb
-5%
+irb(main):002:0> 42 + "Gabriel".to_i
+=> 42
 ```
 
 ---
@@ -144,31 +136,27 @@ O resultado é apenas o valor de numero, pois a conversão de uma string em inte
 
 ```bash
 $ irb
-irb(main):001:0> "Rafael".to_i
+irb(main):003:0> "Gabriel".to_i
 => 0
 ```
 
-a não ser que seja um número no formato de string, como `"42"`, por exemplo.
+a não ser que seja um número no formato de string, como `"23"`, por exemplo.
 
 ```bash
-irb(main):002:0> "42".to_i
-=> 42
+irb(main):004:0> "23".to_i
+=> 23
 ```
 
 ---
 
 Se trocassemos a ordem das variáveis,
 
-```ruby
-# teste.rb
-...
-print string + numero
-```
-
 ```bash
-$ ruby teste.rb
-teste.rb:4:in `+': no implicit conversion of Fixnum into String (TypeError)
-    from teste.rb:4:in `<main>'
+irb(main):005:0> print "Gabriel" + 42
+TypeError: no implicit conversion of Fixnum into String
+  from (irb):6:in `+'
+  from (irb):6
+  from /usr/local/bin/irb:11:in `<main>'
 ```
 
 ---
@@ -177,20 +165,58 @@ O erro de tipo nos diz que não pode haver uma conversão implicita de um `Fixnu
 
 O que tentamos fazer foi uma concatenação de string, resolvemos isso convertendo o numero para uma string.
 
-```ruby
-# teste.rb
-...
-print string + numero.to_s
-```
-
 ```bash
-$ ruby teste.rb
-Rafael5%
+irb(main):006:0> print "Gabriel" + 42.to_s
+Gabriel42=> nil
 ```
 
 ---
 
 Podemos tirar do exemplo que a tipagem forte do Ruby não nos deixa realizar operações com tipos de dados diferentes.
+
+---
+
+### Tudo é objeto
+
+Em Ruby, tudo é um objeto, até mesmo os números inteiros e as classes.
+
+```bash
+$ irb
+irb(main):001:0> 5.is_a? Object
+=> true
+irb(main):002:0> Fixnum.class
+=> Class
+irb(main):003:0> Fixnum.class.is_a? Object
+=> true
+```
+
+---
+
+```ruby
+MinhaClasse = Class.new do
+  attr_accessor :minha_variavel
+end
+
+novo_objeto = MinhaClasse.new
+novo_objeto.minha_variavel = 'uma_string'
+
+puts novo_objeto.minha_variavel
+# => uma_string
+```
+
+---
+
+### Blocos e Iteradores
+
+Diferente de outras linguagens como C, C++, que utilizam ciclos sobre um índice, ou sobre uma lista, como o Perl (`for (@a) {...}`) ou `for i in Lista: ...` no Python, no Ruby é muito comum usar o método `each` para iterar junto com um bloco.
+
+```ruby
+minha_lista.each { # faz_algo }
+
+minha_lista.each do
+  # faz_algo
+end
+``` 
 
 ---
 
@@ -238,6 +264,26 @@ A saída é o resultado do método.
 
 ---
 
+### Métodos de um Objeto
+
+```
+$ irb
+irb(main):001:0> 5.methods
+=> [:%, :&, :*, :+, :-, :/, :<, :>, :^, :|, :~, :-@, :**, :<=>, :<<, :>>, :<=, :>=, :==, :===, :[], :inspect, :size,
+:succ, :to_s, :to_f, :div, :divmod, :fdiv, :modulo, :abs, :magnitude, :zero?, :odd?, :even?, :bit_length, :to_int, :to_i, 
+:next, :upto, :chr, :ord, :integer?, :floor, :ceil, :round, :truncate, :downto, :times, :pred, :to_r, :numerator, 
+:denominator, :rationalize, :gcd, :lcm, :gcdlcm, :+@, :eql?, :singleton_method_added, :coerce, :i, :remainder, :real?, 
+:nonzero?, :step, :positive?, :negative?, :quo, :arg, :rectangular, :rect, :polar, :real, :imaginary, :imag, :abs2, 
+:angle, :phase, :conjugate, :conj, :to_c, :between?, :instance_of?, :public_send, :instance_variable_get, 
+:instance_variable_set, :instance_variable_defined?, :remove_instance_variable, :private_methods, :kind_of?, 
+:instance_variables, :tap, :public_method, :singleton_method, :is_a?, :extend, :define_singleton_method, :method, 
+:to_enum, :enum_for, :=~, :!~, :respond_to?, :freeze, :display, :object_id, :send, :nil?, :hash, :class, :singleton_class, 
+:clone, :dup, :itself, :taint, :tainted?, :untaint, :untrust, :trust, :untrusted?, :methods, :protected_methods, :frozen?, 
+:public_methods, :singleton_methods, :!, :!=, :__send__, :equal?, :instance_eval, :instance_exec, :__id__]
+```
+
+---
+
 ## Onde usamos o Ruby?
 
 + Na criação de *scripts* de leitura e processamento de arquivos
@@ -251,22 +297,6 @@ A saída é o resultado do método.
 O Rails é um framework WEB que segue o padrão MVC (Model - View - Controller).
 
 Usamos ele na CJR para fazermos os projetos.
-
----
-
-### Exemplo de aplicação
-
-Sistema de Gerenciamento de Atas da CJR
-
-http://sga-cjr.herokuapp.com
-
-![SGA Index]({{ base-url }}
-  /assets/images/ruby/sga-index.png)
-
----
-
-![SGA Index Mobile]({{ base-url }}
-  /assets/images/ruby/sga-index-mobile.png)
 
 ---
 
@@ -290,27 +320,8 @@ end
 
 ---
 
-```ruby
-# app/views/records/index.html.slim
-= content_for :text_logo, 'Sistema de Gerenciamento de Atas'
+### Links e Guias:
 
-.row
-
-  = form_tag('/select_sector_records', remote: true) do
-    
-    .col-sm-9.col-xs-7
-      = collection_select :sector, :id, Sector.all, :id, :name, 
-                          { prompt: false,  selected: session[:sector_id] },
-                          class:'form-control'
-
-    .col-sm-3.col-xs-5
-      = button_tag type: "submit", class: "btn btn-primary btn-block" do
-        i.fa.fa-search
-        | &nbsp;&nbsp;&nbsp;Buscar atas
-```
-
----
-
-Prontos para começar?
-
-C:
++ Documentação: https://www.ruby-lang.org
++ Try Ruby: http://tryruby.org/
++ GitBook: https://unbcjr.gitbooks.io/learning-ruby/content/
