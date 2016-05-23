@@ -1,0 +1,327 @@
+---
+layout: default
+title: Ruby 01
+permalink: /ruby/01/
+---
+
+# Ruby 01
+Tutor: Rafael Fernandes
+
+---
+
+### Programa:
+
++ Introdução
++ Onde usamos o Ruby?
++ Convenções e estruturas primitivas
+    - Tipos de dados e variáveis
+    - Entrada e saída de dados
+    - Estruturas condicionais
+    - Estruturas de repetição
++ Estruturas de dados
+    - Arrays
+    - Hashes
++ Blocos, Procs e Lambdas
++ Orientação a objetos
+    - Classe
+    - Métodos e objetos
+    - Estrutura da classe
+    - Herança
++ Construindo uma aplicação
+
+---
+
+## Introdução
+
+Verifique se o Ruby está instalado:
+```bash
+$ ruby -v
+ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
+```
+
+Se não, utilize o seguinte site:
+https://repl.it/languages/ruby
+
+e instale o Ruby depois.
+
+---
+
+### O Ruby
+
+O Ruby é uma linguagem de programação multiparadigma **interpretada**, de tipagem **forte** e **dinâmica**.
+
+---
+
+### Interpretada
+O Ruby possui um programa que é responsável pela interpretação do código, isto é, transformar o código em instruções de máquina e executá-las.
+
+---
+
+### Interpretador interativo
+Podemos acessar um interpretador interativo no terminal:
+
+```bash
+$ irb
+irb(main):001:0>
+```
+
+E podemos usar métodos, blocos e manipular variáveis neste interpretador.
+
+Por exemplo:
+```bash
+irb(main):001:0> (1..10).to_a.select{ |x| x.even? }
+=> [2, 4, 6, 8, 10]
+```
+
+---
+
+### Ou...
+
+Executando a partir de um arquivo
+
+```ruby
+# teste.rb
+print (1..10).to_a.select{ |x| x.even? }
+```
+
+```bash
+$ ruby teste.rb
+[2, 4, 6, 8, 10]%
+```
+---
+
+### Tipagem dinâmica
+
+Em Ruby não é necessário especificar o tipo de dado ao se declarar uma variável.
+
+Por exemplo:
+```bash
+irb(main):002:0> numero = 5
+=> 5
+irb(main):003:0> numero.class
+=> Fixnum
+```
+
+O Ruby infere o tipo de dado na declaração e o atribui à variável.
+
+---
+
+### Tipagem forte
+
+Podemos entender isso melhor por um exemplo:
+
+```bash
+$ irb
+irb(main):001:0> 42 + "Gabriel"
+TypeError: String can't be coerced into Fixnum
+  from (irb):1:in `+'
+  from (irb):1
+  from /usr/local/bin/irb:11:in `<main>'
+```
+
+---
+
+O erro de tipo nos diz que a `String` não pode ser forçada num `Fixnum`.
+
+O que tentamos fazer foi a soma de uma string com um número, resolvemos isso convertendo a `String` para um `Fixnum`.
+
+```bash
+irb(main):002:0> 42 + "Gabriel".to_i
+=> 42
+```
+
+---
+
+O resultado é apenas o valor de numero, pois a conversão de uma string em inteiro retorna `0`,
+
+```bash
+$ irb
+irb(main):003:0> "Gabriel".to_i
+=> 0
+```
+
+a não ser que seja um número no formato de string, como `"23"`, por exemplo.
+
+```bash
+irb(main):004:0> "23".to_i
+=> 23
+```
+
+---
+
+Se trocassemos a ordem das variáveis,
+
+```bash
+irb(main):005:0> print "Gabriel" + 42
+TypeError: no implicit conversion of Fixnum into String
+  from (irb):6:in `+'
+  from (irb):6
+  from /usr/local/bin/irb:11:in `<main>'
+```
+
+---
+
+O erro de tipo nos diz que não pode haver uma conversão implicita de um `Fixnum` para uma `String`.
+
+O que tentamos fazer foi uma concatenação de string, resolvemos isso convertendo o numero para uma string.
+
+```bash
+irb(main):006:0> print "Gabriel" + 42.to_s
+Gabriel42=> nil
+```
+
+---
+
+Podemos tirar do exemplo que a tipagem forte do Ruby não nos deixa realizar operações com tipos de dados diferentes.
+
+---
+
+### Tudo é objeto
+
+Em Ruby, tudo é um objeto, até mesmo os números inteiros e as classes.
+
+```bash
+$ irb
+irb(main):001:0> 5.is_a? Object
+=> true
+irb(main):002:0> Fixnum.class
+=> Class
+irb(main):003:0> Fixnum.class.is_a? Object
+=> true
+```
+
+---
+
+```ruby
+MinhaClasse = Class.new do
+  attr_accessor :minha_variavel
+end
+
+novo_objeto = MinhaClasse.new
+novo_objeto.minha_variavel = 'uma_string'
+
+puts novo_objeto.minha_variavel
+# => uma_string
+```
+
+---
+
+### Blocos e Iteradores
+
+Diferente de outras linguagens como C, C++, que utilizam ciclos sobre um índice, ou sobre uma lista, como o Perl (`for (@a) {...}`) ou `for i in Lista: ...` no Python, no Ruby é muito comum usar o método `each` para iterar junto com um bloco.
+
+```ruby
+minha_lista.each { # faz_algo }
+
+minha_lista.each do
+  # faz_algo
+end
+``` 
+
+---
+
+### Classes Abertas
+
+O Ruby possui classes abertas, ou seja, podemos defini-las novamente e alterar ou sobrescrever métodos.
+
+```ruby
+# teste.rb
+class Fixnum
+    
+    def + value
+        self - value
+    end
+
+end
+
+print 5 + 4
+```
+
+```bash
+$ ruby teste.rb
+1%
+```
+
+---
+
+### O que aconteceu?
+
+Um número inteiro é uma instância da classe `Fixnum`, ou seja, é um objeto.
+
+A classe `Fixnum` possui já definido o método soma `(+)`.
+
+Ao alterarmos o método, fizemos com que o número fosse subtraído de outro, em vez de ser somado.
+
+Ao fazermos
+
+```ruby
+print 5 + 4
+```
+
+Instanciamos a classe `Fixnum` (objeto '5') e imediatamente utilizamos o método `+` passando como parâmetro o outro objeto '4'.
+
+A saída é o resultado do método.
+
+---
+
+### Métodos de um Objeto
+
+```
+$ irb
+irb(main):001:0> 5.methods
+=> [:%, :&, :*, :+, :-, :/, :<, :>, :^, :|, :~, :-@, :**, :<=>, :<<, :>>, :<=, :>=, :==, :===, :[], :inspect, :size,
+:succ, :to_s, :to_f, :div, :divmod, :fdiv, :modulo, :abs, :magnitude, :zero?, :odd?, :even?, :bit_length, :to_int, :to_i, 
+:next, :upto, :chr, :ord, :integer?, :floor, :ceil, :round, :truncate, :downto, :times, :pred, :to_r, :numerator, 
+:denominator, :rationalize, :gcd, :lcm, :gcdlcm, :+@, :eql?, :singleton_method_added, :coerce, :i, :remainder, :real?, 
+:nonzero?, :step, :positive?, :negative?, :quo, :arg, :rectangular, :rect, :polar, :real, :imaginary, :imag, :abs2, 
+:angle, :phase, :conjugate, :conj, :to_c, :between?, :instance_of?, :public_send, :instance_variable_get, 
+:instance_variable_set, :instance_variable_defined?, :remove_instance_variable, :private_methods, :kind_of?, 
+:instance_variables, :tap, :public_method, :singleton_method, :is_a?, :extend, :define_singleton_method, :method, 
+:to_enum, :enum_for, :=~, :!~, :respond_to?, :freeze, :display, :object_id, :send, :nil?, :hash, :class, :singleton_class, 
+:clone, :dup, :itself, :taint, :tainted?, :untaint, :untrust, :trust, :untrusted?, :methods, :protected_methods, :frozen?, 
+:public_methods, :singleton_methods, :!, :!=, :__send__, :equal?, :instance_eval, :instance_exec, :__id__]
+```
+
+---
+
+## Onde usamos o Ruby?
+
++ Na criação de *scripts* de leitura e processamento de arquivos
++ Automização de *builds* e *deploys*
++ Rails
+
+---
+
+### Rails
+
+O Rails é um framework WEB que segue o padrão MVC (Model - View - Controller).
+
+Usamos ele na CJR para fazermos os projetos.
+
+---
+
+### Exemplo de código Ruby
+
+```ruby
+# app/controllers/users_controller.rb
+class UsersController < ApplicationController
+...
+
+    def create
+        @user = User.create(user_params)
+        respond_to do |format|
+            format.html { redirect_to users_path, notice: 'O usuário foi criado.' }
+        end
+    end
+
+...
+end
+```
+
+---
+
+### Links e Guias:
+
++ Documentação: https://www.ruby-lang.org
++ Try Ruby: http://tryruby.org/
++ GitBook: https://unbcjr.gitbooks.io/learning-ruby/content/
