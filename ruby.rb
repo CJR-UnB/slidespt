@@ -1,11 +1,17 @@
-require 'json'
+def metodo_com_prof
+    proc = Proc.new { return "Retorno do Proc!" }
+    proc.call
+    "Retorno do método"
+end
 
-ficha = { nome: 'Rafael', idade: 20 }
+def metodo_com_lambda
+    lamb = lambda { return "Retorno do Lambda!" }
+    lamb.call
+    "Retorno do método"
+end
 
-puts JSON.pretty_generate(ficha).gsub(":", " =>")
+puts metodo_com_prof
+# => Retorno do Proc!
 
-# Saída
-{
-  "nome" => "Rafael",
-  "idade" => 20
-}
+puts metodo_com_lambda
+# => Retorno do método
