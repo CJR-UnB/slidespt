@@ -1,0 +1,441 @@
+---
+layout: default
+title: Ruby 03
+permalink: /ruby/03/
+---
+
+# Ruby 03
+Tutor: Rafael Fernandes
+
+---
+
+## Estruturas de Dados:
+
+## Arrays e Hashes
+
+---
+
+### Arrays
+
+Arrays são coleções heterogêneas indexadas.
+
+```ruby
+lista = ["Rafael", 20, [42, 23, 1.618]]
+
+print lista
+# => ["Rafael", 20, [42, 23, 1.618]]%
+```
+
+---
+
+### Inicializando Arrays
+
+Arrays são instâncias da classe `Array`.
+
+```ruby
+lista = []
+
+lista = Array.new
+```
+
+---
+
+### Array.new
+
+O construtor da classe Array aceita parâmetros.
+
+```ruby
+lista = Array.new(10, 'a')
+
+print lista
+# => ["a", "a", "a", "a", "a", "a", "a", "a", "a", "a"]%
+```
+
+---
+
+Podemos passar um bloco também.
+
+```ruby
+lista_vazia = Array.new(3) { Array.new(3) }
+
+print lista_vazia
+# => [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]%
+```
+
+---
+
+### Método to_a
+
+```ruby
+hash = {nome: 'Rafael', idade: 20}
+
+print hash.to_a
+# => [[:nome, "Rafael"], [:idade, 20]]%
+```
+
+---
+
+### Acessando elementos
+
+```ruby
+array = [1, 2, 3, 4, 5, 6]
+
+array[0]
+# => 1
+
+array[20]   
+# => nil
+
+array[-1]       
+# => 6
+
+# a partir de x (índice), pegue y
+array[1, 2]    #=> [2, 3]
+
+# pegue de x a y (índice)
+array[1...4]   #=> [2, 3, 4]
+```
+
+---
+
+### Métodos at e fetch
+
+```ruby
+array = [1, 2, 3, 4, 5, 6]
+
+array.at(2)
+# => 3
+
+array.at(100)
+# => nil
+
+array.fetch(2)
+# => 3
+
+array.fetch(100)
+# => IndexError: index 100 outside of array bounds: -6...6
+
+```
+
+---
+
+Para tratar o erro do `fetch`:
+
+```ruby
+array = [1, 2, 3, 4, 5, 6]
+
+array.fetch(100, "Ops! Algo deu errado :C")
+=> Ops! Algo deu errado :C
+```
+
+---
+
+### Métodos first e last
+
+```ruby
+array = [1, 2, 3, 4, 5, 6]
+
+array.first
+# => 1
+
+array.first(3)
+# => [1, 2, 3]
+
+array.last
+# => 6
+
+array.last
+# => [4, 5, 6]
+```
+
+---
+
+### Informações do Array
+
+```ruby
+array = [1, 2, 3, 4, 5, 6]
+
+array.length
+# => 6
+
+array.count
+# => 6
+
+array.empty?
+# => false
+
+array.include? 6
+# => true
+```
+
+---
+
+### Inserindo elementos
+
+```ruby
+array = []
+
+array << "Rafael"
+# => ["Rafael"]
+
+# insere no final
+array.push(20)
+# => ["Rafael", 20]
+
+# insere no início
+array.unshift('toalha')
+# => ["toalha", "Rafael", 20]
+
+# insere na posição x
+array.insert(1, "intruso!")
+# => ["toalha", "intruso!", "Rafael", 20]
+```
+
+---
+
+### Removendo elementos
+
+```ruby
+array = ["toalha", "intruso!", "Rafael", 20]
+
+# retira do final
+array.pop
+# => 20
+
+array
+# => ["toalha", "intruso!", "Rafael"]
+
+# retira do início
+array.shift
+# => "toalha"
+
+array
+# => ["intruso!", "Rafael"]
+```
+
+---
+
+```ruby
+# retira da posição x
+array.delete_at(1)
+# "Rafael"
+
+array
+# => ["intruso!"]
+
+# retira um elemento específico
+array.delete('intruso!')
+# => "intruso!"
+
+array
+# => []
+```
+
+---
+
+### Métodos compact e uniq
+
+```ruby
+array = ["André", nil, "Ana", nil, "Adriano", nil, "André", "Ana", "Adriano"]
+
+# remove elementos nulos
+array.compact!
+# => ["André", "Ana", "Adriano", "André", "Ana", "Adriano"]
+
+# remove elementos duplicados
+array.uniq!
+# => ["André", "Ana", "Adriano"]
+
+```
+
+---
+
+### Iterando em Arrays
+
+A forma mais comum é usar o método `each` passando um bloco.
+
+```ruby
+array = [1, 2, 3, 4, 5, 6]
+
+array.each do |a|
+    print "#{a ** 2} "
+end
+
+# => 1 4 9 16 25 36 % 
+```
+
+---
+
+### Método map
+
+Retorna um array de acordo com o bloco passado.
+
+```ruby
+array = [1, 2, 3, 4, 5, 6]
+
+array.map! { |a| a ** 2 }
+# => [1, 4, 9, 16, 25, 36]
+```
+---
+
+### Selecionando elementos
+
+Seleção não destrutiva:
+
+```array
+array = [1, 2, 3, 4, 5, 6]
+
+array.select { |a| a > 3 }
+# => [4, 5, 6]
+
+array.reject { |a| a > 3 }
+# => [1, 2, 3]
+```
+
+A seleção destrutiva é utilizar os métodos `select!` e `reject!`
+
+---
+
+### Métodos delete_if e keep_if
+
+```array
+array = [1, 2, 3, 4, 5, 6]
+
+array.delete_if { |a| a > 3 }
+# => [1, 2, 3]
+
+array.keep_if { |a| a > 3 }
+# => [4, 5, 6]
+```
+
+---
+
+### Hashes
+
+Hashes são coleções chaves-valor, estas chaves sendo únicas, num estilo de um dicionário.
+
+```ruby
+ficha = { nome: 'Rafael', idade: 20 }
+
+print ficha
+# => {:nome=>"Rafael", :idade=>20}
+```
+
+---
+
+### Imprimindo hashes bonitos! C:
+
+```ruby
+require 'json'
+
+ficha = { nome: 'Rafael', idade: 20 }
+
+puts JSON.pretty_generate(ficha).gsub(":", " =>")
+
+# Saída
+{
+  "nome" => "Rafael",
+  "idade" => 20
+}
+```
+
+---
+
+### Inicializando Hashes
+
+Hashes são instâncias da classe `Hash`
+
+```ruby
+ficha = {}
+
+ficha = Hash.new
+```
+
+---
+
+### Hash.new
+
+O construtor da classe Hash aceita parâmetros
+
+```ruby
+# valor default
+ficha = Hash.new('indefinido')
+
+ficha[:nome] = "Rafael"
+
+print ficha
+# => {:nome=>"Rafael"}
+
+print ficha[:idade]
+# => "indefinido"
+```
+---
+
+### Acessando elementos
+
+```ruby
+ficha = { nome: 'Rafael', idade: 20 }
+
+puts ficha[:nome]
+# => "Rafael"
+
+puts ficha[:idade]
+# => 20
+```
+
+---
+
+### Inserindo elementos
+
+```ruby
+ficha = {}
+
+ficha[:nome] = "Rafael"
+ficha[:idade] = 20
+```
+
+---
+
+### Removendo elementos
+
+```ruby
+ficha = { nome: 'Rafael', idade: 20 }
+
+ficha.delete(:nome)
+```
+
+---
+
+### Iterando em Hashes
+
+A forma mais comum é usar o método each passando um bloco.
+
+```ruby
+ficha = { nome: 'Rafael', idade: 20 }
+
+ficha.each do |key, value|
+    puts "#{key} => #{value}"
+end
+```
+
+---
+
+Pode-se também utilizar os métodos `each_key` e `each_value`
+
+```ruby
+ficha = { nome: 'Rafael', idade: 20 }
+
+ficha.each_key do |key|
+    puts "#{key}"
+end
+```
+
+---
+
+```ruby
+ficha = { nome: 'Rafael', idade: 20 }
+
+ficha.each_value do |value|
+    puts "#{value}"
+end
+```

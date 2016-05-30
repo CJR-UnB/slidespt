@@ -414,36 +414,34 @@ end
 
 ## Exercício
 
-https://www.urionlinejudge.com.br/judge/pt/problems/view/1050, adaptado
+https://www.urionlinejudge.com.br/judge/pt/problems/view/1036
 
-Solicite do usuário um número inteiro que representa um código de DDD para discagem interurbana. Em seguida, informe à qual cidade o DDD pertence, considerando a tabela abaixo:
+Leia 3 valores de ponto flutuante e efetue o cálculo das raízes da equação de Bhaskara. Se não for possível calcular as raízes, mostre a mensagem correspondente “Impossivel calcular”, caso haja uma divisão por 0 ou raiz de numero negativo.
 
-![tabela](https://urionlinejudge.r.worldssl.net/gallery/images/problems/UOJ_1050.png)
+### Entrada
 
-Se a entrada for qualquer outro DDD que não esteja presente na tabela acima, o programa deverá informar:
-DDD nao cadastrado
+Leia três valores de ponto flutuante (double) A, B e C.
+
+### Saída
+
+Se não houver possibildade de calcular as raízes, apresente a mensagem "Impossivel calcular". Caso contrário, imprima o resultado das raízes com 5 dígitos após o ponto, com uma mensagem correspondente conforme exemplo abaixo. Imprima sempre o final de linha após cada mensagem.
 
 ---
 
-### Resposta (para consulta!)
+### Ex: entradas e saídas
+10.0 20.1 5.1
+R1 = -0.29788
+R2 = -1.71212
 
-```ruby
-print "Digite o DDD: "
-ddd = gets.chomp.to_i
+0.0 20.0 5.0
+Impossivel calcular
 
-case ddd
-  when 61
-    puts "Brasilia" 
-  when 71
-    puts "Salvador"
-  when 11
-    puts "São Paulo"
-  # Complete com o resto
-  else
-    puts "DDD nao cadastrado"
-end
-```
+10.3 203.0 5.0
+R1 = -0.02466
+R2 = -19.68408
 
+10.0 3.0 5.0
+Impossivel calcular
 ---
 
 ## Estruturas de Repetição
