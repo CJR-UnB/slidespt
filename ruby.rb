@@ -1,17 +1,51 @@
-def metodo_com_prof
-    proc = Proc.new { return "Retorno do Proc!" }
-    proc.call
-    "Retorno do método"
+class Livro
+
+  attr_accessor :nome, :codigo, :autor
+
+  def initialize(nome, codigo, autor)
+    @nome = nome
+    @codigo = codigo
+    @autor = autor
+  end
+
 end
 
-def metodo_com_lambda
-    lamb = lambda { return "Retorno do Lambda!" }
-    lamb.call
-    "Retorno do método"
+class Biblioteca
+
+  def initialize
+    @livros = {}
+  end
+
+  def adiciona(livro)
+    @livros[livro.codigo] = livro
+  end
+
+  def remove(livro)
+    puts @livros
+    @livros.delete(livro.codigo)
+  end
+
+  def livros
+    @livros.values
+  end
+
+  def quantidade_de_livros
+    @livros.count
+  end
+
 end
 
-puts metodo_com_prof
-# => Retorno do Proc!
+hp_1 = Livro.new("Harry Potter 1", 312, "J.K. Rowling")
+hp_2 = Livro.new("Harry Potter 2", 313, "J.K. Rowling")
 
-puts metodo_com_lambda
-# => Retorno do método
+biblioteca = Biblioteca.new
+
+biblioteca.adiciona(hp_2)
+biblioteca.adiciona(hp_1)
+
+biblioteca.livros.each do |livro|
+  puts livro.nome
+  puts livro.autor
+end
+
+puts biblioteca.quantidade_de_livros
