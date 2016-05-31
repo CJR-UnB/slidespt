@@ -1,0 +1,300 @@
+---
+layout: default
+title: Ruby 05
+permalink: /ruby/05/
+---
+
+# Ruby 05
+Tutor: Rafael Fernandes
+
+---
+
+## Orientação à Objetos
+
+> A programação orientada a objetos refere-se ao paradigma de programação onde o desenvolvimento do software é regido pelas definições e relacionamentos entre os objetos que compõem o mesmo
+
+---
+
+## Abstração e Encapsulamento
+
+> [...] isolamos os objetos que queremos representar do ambiente complexo em que se situam, e nesses objetos representamos somente as características que são relevantes para o problema em questão
+
+> [...] tem como característica ocultar partes da implementação de uma entidade da orientação a objetos, desta forma construindo softwares que atinjam suas funcionaliddes e escondam os detalhes de implementação do mundo exterior. Os objetos encapsulados funcionam como uma caixa preta, sabemos sua interface externa, mas não precisamos nos preocuparmos com o que acontece dentro dela.
+
+---
+
+## Ruby
+
+Podemos dizer que o Ruby é uma linguagem puramente orientada a objetos.
+
+```ruby
+5.is_a? Object
+=> true
+
+"String".is_a? Object
+=> true
+
+[1, 2].is_a? Object
+=> true
+
+{a: b}.is_a? Object
+=> true
+```
+
+---
+
+```ruby
+lambda { |x| x.even? }.is_a? Object
+=> true
+
+Fixnum.is_a? Object
+=> true
+
+Class.is_a? Object
+=> true
+
+Object.is_a? Object
+=> true
+```
+
+---
+
+### Criando uma nova classe...
+
+```ruby
+class Pilha
+end
+
+Pilha.is_a? Object
+=> true
+
+# então
+
+Pilha = Class.new
+```
+
+---
+
+### Método construtor
+
+```ruby
+class Pilha
+
+    def initialize
+        @store = Array.new
+    end
+
+end
+```
+
+---
+
+### Variáveis de classe e instância
+
+Variáveis de classe começam com `@@`.
+Variáveis de instância começam com `@`.
+
+```ruby
+class Pilha
+
+    @@pilhas_criadas = 0
+
+    def initiliaze
+        @store = Array.new
+        @@pilhas_criadas += 1
+    end
+
+end
+```
+---
+
+### Métodos de classe e métodos de instância
+
+Métodos de classe:
+
+```ruby
+class Pilha
+    
+    @@pilhas_criadas = 0
+
+    ...
+
+    def self.pilhas_criadas
+        @@pilhas_criadas
+    end
+
+end
+```
+
+---
+
+Métodos de instância:
+
+```ruby
+class Pilha
+    ...
+
+    def push(valor)
+        @store.push(valor)
+    end
+
+    def pop
+        @store.pop
+    end
+
+end
+```
+
+---
+
+Outros métodos de instância para a nossa classe:
+
+```ruby
+class Pilha
+
+  ...
+
+    def ver
+        puts @store.reverse
+    end
+
+    def tamanho
+        @store.size
+    end
+
+    def topo
+        @store.last
+    end
+
+end
+```
+
+---
+
+### Um pouco mais de métodos
+
+Passando arrays:
+
+```ruby
+def metodo(*array)
+    array.each { |x| puts x }
+end
+```
+
+---
+
+Nomeando parâmetros:
+
+```ruby
+def soma(a, b, opcoes = {})
+    soma = a + b
+    soma = soma.abs if opcoes[:modulo]
+    soma = soma.round(opcoes[:precisao]) if opcoes[:arredondar]
+    soma
+end
+
+puts soma(1.618, 2.483, modulo: true, arredondar: true, precisao: 2)
+# => 4.1
+```
+
+---
+
+### O self
+
+O self referência a instância da classe no método
+
+```ruby
+class String
+
+    def plural
+        "#{self}s"
+    end
+
+end
+
+puts "Dado".plural
+# => Dados
+```
+
+---
+
+### Accessors
+
+Accessors substituem os getters and setters dos atributos.
+
+Em vez disso:
+
+```ruby
+class Item
+
+    @nome
+
+    def nome
+        @nome
+    end
+
+    def nome=(valor)
+        @nome = valor
+    end
+
+end
+``` 
+
+---
+
+use isto:
+
+```ruby
+class Item
+
+    attr_accessor :nome
+
+end
+```
+
++ `attr_reader`: getter
++ `attr_writter`: setter
++ `attr_accessor`: getter & setter
+
+---
+
+### Herança
+
+Herdando métodos:
+
+```ruby
+class Mamifero
+    
+    def respira; puts "inspirando e expirando!" end    
+
+end
+
+class Cachorro < Mamifero
+    
+    def late; puts "Au au!" end
+
+end
+
+dog = Cachorro.new
+
+dog.respira
+dog.late
+```
+
+---
+
+Herdando atributos:
+
+```ruby
+class A
+    attr_accessor :var
+end
+
+class B < A
+end
+
+obj = B.new
+obj.var = "oi!"
+
+puts obj.var
+```
